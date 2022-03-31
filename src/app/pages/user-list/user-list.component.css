@@ -1,0 +1,24 @@
+.row {
+    display: flex;
+}
+
+.page-selector {
+    display: flex;
+}
+
+.page-item {
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.page-item:hover {
+    color: red;
+}
+
+.selected-page {
+    color: red;
+}
+
+.locked-user {
+    text-decoration: line-through;
+}

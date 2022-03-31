@@ -1,0 +1,24 @@
+<div>
+    <button type="button" (click)="navigateToUserList()">{{'Back to user list'}}</button>
+</div>
+<div>
+    <form *ngIf="form" [formGroup]="form">
+        <div>
+            <div>
+                <label for="first_name">First name: </label>
+                <input id="first_name" type="text" formControlName="first_name"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="last_name">Last name: </label>
+                <input id="last_name" type="text" formControlName="last_name"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <button type="button" (click)="editUser()">Add user</button>
+            </div>
+        </div>
+    </form>
+</div>
