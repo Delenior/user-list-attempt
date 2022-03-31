@@ -32,7 +32,7 @@ export class EditUserComponent implements OnInit {
     this.userService.allUsers.find(item => {
       if (item === this.userService.editingUser) {
         item.first_name = this.form.get('first_name')?.value;
-        item.last_name = this.form.get('first_name')?.value;
+        item.last_name = this.form.get('last_name')?.value;
         item.updated_at = this.form.get('updated_at')?.value;
       }
     });
