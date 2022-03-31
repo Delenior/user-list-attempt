@@ -17,7 +17,7 @@ export class UserService {
     return this.http.get('https://assessment-users-backend.herokuapp.com/users.json');
   }
 
-  addUser(body: any): Observable<any> {
+ /* addUser(body: any): Observable<any> {
     return this.http.post('https://assessment-users-backend.herokuapp.com/users', body);
-  }
+  }*/
 }

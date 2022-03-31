@@ -13,30 +13,36 @@ export class AddUserComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService, private datePipe: DatePipe) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private datePipe: DatePipe
+    ) { }
 
   ngOnInit(): void {
+    // Angular reactive form készítésének meghívása
     this.initForm();
   }
 
+  // User listára való navigáció
   navigateToUserList(): void {
     this.router.navigate(['/']);
   }
 
+  // Elkészített user hozzáadása a usereket tároló tömbhöz
   addUser(): void {
-    console.log(this.form.getRawValue());
-  /*  this.userService.addUser(this.form.getRawValue).subscribe(response => {
-      console.log('Response from server: ', response);
-    });*/
+    // Formból kivesszük a form értékét egy változóba
     const userData = this.form.getRawValue();
-    console.log(userData);
+    // Form értékét tartalmazó változót hozzácsapjuk a tömbhöz
     if (this.userService.allUsers) {
       this.userService.allUsers.push(userData);
     }
+    // Amint kész vagyunk a hozzáadással vissza navigálunk a user listára
     this.router.navigate(['/']);
-
   }
 
+  // Angular reactive form inicializálása
   private initForm(): void {
     this.form = this.formBuilder.group({
       id: Math.floor((Math.random() * 10000) + 1000),
