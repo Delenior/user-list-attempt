@@ -20,6 +20,7 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.userService.allUsers.length < 3) {
       this.userService.getUsers().subscribe(response => {
         this.userService.allUsers = response;
         this.users=response;
@@ -28,6 +29,15 @@ export class UserListComponent implements OnInit {
           this.displayedUsers.push(this.userService.allUsers[i]);
         }
       });
+    } else {
+      this.users = this.userService.allUsers;
+      this.pageNumber = this.getPageNumber(this.userService.allUsers.length);
+      for (let i = this.currentPage; i < this.currentPage + 10; i++) {
+        this.displayedUsers.push(this.userService.allUsers[i]);
+      }
+
+    }
+
   }
 
   switchPage(page: any): void {

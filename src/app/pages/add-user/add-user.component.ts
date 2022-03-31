@@ -33,6 +33,8 @@ export class AddUserComponent implements OnInit {
     if (this.userService.allUsers) {
       this.userService.allUsers.push(userData);
     }
+    this.router.navigate(['/']);
+
   }
 
   private initForm(): void {

@@ -27,7 +27,14 @@ export class EditUserComponent implements OnInit {
 
   editUser(): void {
     this.form.get('updated_at')?.patchValue(this.datePipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss.SSS'));
-    console.log(this.form.getRawValue());
+    this.userService.allUsers.find(item => {
+      if (item === this.userService.editingUser) {
+        item.first_name = this.form.get('first_name')?.value;
+        item.last_name = this.form.get('first_name')?.value;
+        item.updated_at = this.form.get('updated_at')?.value;
+      }
+    });
+    this.router.navigate(['/']);
   }
   
   private initForm(user: any): void {
